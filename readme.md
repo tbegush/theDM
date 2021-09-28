@@ -177,3 +177,21 @@ Project Link: [https://github.com/tbegush/TheDM](https://github.com/tbegush/TheD
 * []()
 * []()
 
+
+
+
+<!-- markdown links & images -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/tbegush/thedm.svg?style=for-the-badge
+[contributors-url]: https://github.com/tbegush/thedm/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/tbegush/thedm.svg?style=for-the-badge
+[forks-url]: https://github.com/tbegush/thedm/network/members
+[stars-shield]: https://img.shields.io/github/stars/tbegush/thedm.svg?style=for-the-badge
+[stars-url]: https://github.com/tbegush/thedm/stargazers
+[issues-shield]: https://img.shields.io/github/issues/tbegush/thedm.svg?style=for-the-badge
+[issues-url]: https://github.com/tbegush/thedm/issues
+[license-shield]: https://img.shields.io/github/license/tbegush/thedm.svg?style=for-the-badge
+[license-url]: https://raw.githubusercontent.com/tbegush/thedm/master/license
+[linkedin-shield]: https://img.shields.io/badge/-linkedin-black.svg?style=for-the-badge&logo=linkedin&colorb=555
+[linkedin-url]: https://linkedin.com/in/tbegush
+
