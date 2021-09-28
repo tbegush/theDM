@@ -24,24 +24,17 @@
 -->
 
 [![Contributors][contributors-shield]][contributors-url]
-
 [![Forks][forks-shield]][forks-url]
-
 [![Stargazers][stars-shield]][stars-url]
-
 [![Issues][issues-shield]][issues-url]
-
 [![MIT License][license-shield]][license-url]
-
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/tbegush/TheDM-logo.png">
-    <img src="./TheDM-logo.png" alt="Logo" width="363" height=auto>
+  <a href="https://github.com/tbegush/thedm-logo.jpg">
+    <img src="./thedm-logo.jpg" alt="Logo" width="363" height=auto>
   </a>
 
   <h3 align="center">TheDM</h3>
