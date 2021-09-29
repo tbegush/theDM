@@ -13,6 +13,7 @@ module.exports = {
         }
         res.json(foundUser);
     },
+    //Creates a New User
     async createUser ({ body }, res){
         const newUser = await User.create(body);
 
@@ -21,5 +22,5 @@ module.exports = {
         }
 
         res.json({ newUser });
-    }
+    },
 }
