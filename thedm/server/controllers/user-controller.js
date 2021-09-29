@@ -23,4 +23,20 @@ module.exports = {
 
         res.json({ newUser });
     },
+    //Login a User
+    async login({ body }, res) {
+        const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email } ] });
+
+        if(!user){
+            return res.status(400).json({ message: "Can't find this user" });
+        }
+
+        const correctPW = await user.isCorrrectPassword(body.password);
+
+        if(!correctPW) {
+            return res.status(400).json({ message: 'Wrong password' });
+        }
+
+        res.json({ user });
+    }
 }
