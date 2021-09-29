@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2021 Thomas J Begush
+Copyright (c) 2020 Creative Tim (https://www.creative-tim.com?ref=blkdsr-license-md)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
