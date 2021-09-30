@@ -12,6 +12,10 @@ router
     .post(createUser)
 
 router
+    .route('/:id')
+    .get(getSingleUser);
+
+router
     .route('/login')
     .post(login);
 

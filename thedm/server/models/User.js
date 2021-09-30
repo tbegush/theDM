@@ -1,4 +1,6 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema, model } = mongoose;
+
 const bcrypt = require('bcrypt')
 
 
@@ -36,3 +38,6 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
+const User = mongoose.model('User', userSchema );
+
+module.exports = User;
