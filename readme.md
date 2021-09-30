@@ -86,10 +86,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-SCREEN SHOTS GO HERE
-
-
-
+![Screenshot of TheDM](/thedm-screenshot.png)
 
 ### Built With
 
