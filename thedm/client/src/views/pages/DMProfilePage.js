@@ -47,6 +47,9 @@ import {
 import ExamplesNavbar from "components/Navbars/DMNavbar.js";
 import Footer from "components/Footer/DMFooter.js";
 
+// DM components
+import UsersList from "components/DM/UsersList";
+
 const carouselItems = [
   {
     src: require("assets/img/denys.jpg").default,
@@ -94,16 +97,19 @@ export default function DMProfilePage() {
       <ExamplesNavbar />
       <div className="wrapper">
         <div className="page-header">
-          <img
-            alt="..."
-            className="dots"
-            src={require("assets/img/dots.png").default}
-          />
-          <img
-            alt="..."
-            className="path"
-            src={require("assets/img/path4.png").default}
-          />
+            <img
+              alt="..."
+              className="dots"
+              src={require("assets/img/dots.png").default}
+            />
+            <img
+              alt="..."
+              className="path"
+              src={require("assets/img/path4.png").default}
+            />
+        </div>
+        <section className="section section-lg">
+          <section className="section">
           <Container className="align-items-center">
             <Row>
               <Col className="ml-auto mr-auto" lg="12" md="12">
@@ -114,7 +120,7 @@ export default function DMProfilePage() {
                       className="img-center img-fluid rounded-circle"
                       src={require("assets/img/mike.jpg").default}
                     />
-                    <h4 className="title">Transactions</h4>
+                    <h4 className="title">(USERNAME)</h4>
                   </CardHeader>
                   <CardBody>
                     <Nav
@@ -132,7 +138,7 @@ export default function DMProfilePage() {
                           }}
                           href="#pablo"
                         >
-                          Wallet
+                          Messages
                         </NavLink>
                       </NavItem>
                       <NavItem>
@@ -146,21 +152,7 @@ export default function DMProfilePage() {
                           }}
                           href="#pablo"
                         >
-                          Send
-                        </NavLink>
-                      </NavItem>
-                      <NavItem>
-                        <NavLink
-                          className={classnames({
-                            active: tabs === 3,
-                          })}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setTabs(3);
-                          }}
-                          href="#pablo"
-                        >
-                          News
+                          Search
                         </NavLink>
                       </NavItem>
                     </Nav>
@@ -168,57 +160,42 @@ export default function DMProfilePage() {
                       className="tab-subcategories"
                       activeTab={"tab" + tabs}
                     >
-                      
+                    <TabPane tabId="tab1">
+                      <Row>
+                        <Label sm="3">Search Users</Label>
+                        <Col sm="9">
+                            <FormGroup>
+                              <Input
+                                placeholder="Ashley Zeel"
+                                type="text"
+                              />
+                            </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Label sm="3"></Label>
+                        <Col sm="9">
+                        </Col>
+                      </Row>
+                    </TabPane>
                       <TabPane tabId="tab2">
                         <Row>
-                          <Label sm="3">Pay to</Label>
+                          <Label sm="3">Search Users</Label>
                           <Col sm="9">
                             <FormGroup>
                               <Input
-                                placeholder="e.g. 1Nasd92348hU984353hfid"
+                                placeholder="Steve Long"
                                 type="text"
                               />
-                              <FormText color="default" tag="span">
-                                Please enter a valid address.
-                              </FormText>
                             </FormGroup>
                           </Col>
                         </Row>
                         <Row>
-                          <Label sm="3">Amount</Label>
+                          <Label sm="3"></Label>
                           <Col sm="9">
-                            <FormGroup>
-                              <Input placeholder="1.587" type="text" />
-                            </FormGroup>
                           </Col>
                         </Row>
-                        <Button
-                          className="btn-simple btn-icon btn-round float-right"
-                          color="primary"
-                          type="submit"
-                        >
-                          <i className="tim-icons icon-send" />
-                        </Button>
-                      </TabPane>
-                      <TabPane tabId="tab3">
-                        <Table className="tablesorter" responsive>
-                          <thead className="text-primary">
-                            <tr>
-                              <th className="header">Latest Crypto News</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>The Daily: Nexo to Pay on Stable...</td>
-                            </tr>
-                            <tr>
-                              <td>Venezuela Begins Public of Nation...</td>
-                            </tr>
-                            <tr>
-                              <td>PR: BitCanna – Dutch Blockchain...</td>
-                            </tr>
-                          </tbody>
-                        </Table>
+                        <UsersList></UsersList>
                       </TabPane>
                     </TabContent>
                   </CardBody>
@@ -226,7 +203,8 @@ export default function DMProfilePage() {
               </Col>
             </Row>
           </Container>
-        </div>
+        </section>
+        </section>
         <Footer />
       </div>
     </>
