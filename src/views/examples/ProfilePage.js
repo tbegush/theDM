@@ -216,34 +216,7 @@ export default function ProfilePage() {
                       className="tab-subcategories"
                       activeTab={"tab" + tabs}
                     >
-                      <TabPane tabId="tab1">
-                        <Table className="tablesorter" responsive>
-                          <thead className="text-primary">
-                            <tr>
-                              <th className="header">COIN</th>
-                              <th className="header">AMOUNT</th>
-                              <th className="header">VALUE</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>BTC</td>
-                              <td>7.342</td>
-                              <td>48,870.75 USD</td>
-                            </tr>
-                            <tr>
-                              <td>ETH</td>
-                              <td>30.737</td>
-                              <td>64,53.30 USD</td>
-                            </tr>
-                            <tr>
-                              <td>XRP</td>
-                              <td>19.242</td>
-                              <td>18,354.96 USD</td>
-                            </tr>
-                          </tbody>
-                        </Table>
-                      </TabPane>
+                      
                       <TabPane tabId="tab2">
                         <Row>
                           <Label sm="3">Pay to</Label>

@@ -70,9 +70,10 @@ import {
         setCollapseOut("");
     };
     const scrollToDownload = () => {
-        document
+        /// place what you want in here
+        /*document
         .getElementById("download-section")
-        .scrollIntoView({ behavior: "smooth" });
+        .scrollIntoView({ behavior: "smooth" });*/
     };
     return (
         <Navbar className={"fixed-top " + color} color-on-scroll="100" expand="lg">
@@ -113,7 +114,7 @@ import {
                 <Row>
                 <Col className="collapse-brand" xs="6">
                     <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                    BLK•React
+                    The DM
                     </a>
                 </Col>
                 <Col className="collapse-close text-right" xs="6">
@@ -131,19 +132,19 @@ import {
                 <NavItem className="p-0">
                 <NavLink
                     data-placement="bottom"
-                    href="https://twitter.com/CreativeTim"
+                    href="https://twitter.com/"
                     rel="noopener noreferrer"
                     target="_blank"
                     title="Follow us on Twitter"
                 >
                     <i className="fab fa-twitter" />
-                    <p className="d-lg-none d-xl-none">Twitter</p>
+                    <p className="d-lg-none d-xl-none">Twitter </p>
                 </NavLink>
                 </NavItem>
                 <NavItem className="p-0">
                 <NavLink
                     data-placement="bottom"
-                    href="https://www.facebook.com/CreativeTim"
+                    href="https://www.facebook.com/"
                     rel="noopener noreferrer"
                     target="_blank"
                     title="Like us on Facebook"
@@ -155,7 +156,7 @@ import {
                 <NavItem className="p-0">
                 <NavLink
                     data-placement="bottom"
-                    href="https://www.instagram.com/CreativeTimOfficial"
+                    href="https://www.instagram.com/thedmwebsite"
                     rel="noopener noreferrer"
                     target="_blank"
                     title="Follow us on Instagram"
@@ -174,22 +175,18 @@ import {
                     onClick={(e) => e.preventDefault()}
                 >
                     <i className="fa fa-cogs d-lg-none d-xl-none" />
-                    Getting started
+                    Menu
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-with-icons">
-                    <DropdownItem href="https://demos.creative-tim.com/blk-design-system-react/#/documentation/overview">
-                    <i className="tim-icons icon-paper" />
-                    Documentation
-                    </DropdownItem>
-                    <DropdownItem tag={Link} to="/register-page">
+                    <DropdownItem tag={Link} to="/register">
                     <i className="tim-icons icon-bullet-list-67" />
                     Register Page
                     </DropdownItem>
-                    <DropdownItem tag={Link} to="/landing-page">
+                    <DropdownItem tag={Link} to="/">
                     <i className="tim-icons icon-image-02" />
-                    Landing Page
+                    Home
                     </DropdownItem>
-                    <DropdownItem tag={Link} to="/profile-page">
+                    <DropdownItem tag={Link} to="/profile">
                     <i className="tim-icons icon-single-02" />
                     Profile Page
                     </DropdownItem>

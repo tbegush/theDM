@@ -20,7 +20,7 @@ import React from "react";
 // core components
 import DMNavbar from "components/Navbars/DMNavbar.js";
 import PageHeader from "components/PageHeader/PageHeader.js";
-import Footer from "components/Footer/Footer.js";
+import DMFooter from "components/Footer/DMFooter.js";
 
 // sections for this page/view
 
@@ -40,7 +40,7 @@ export default function HomePage() {
         <PageHeader />
         <div className="main">
         </div>
-        <Footer />
+        <DMFooter />
       </div>
     </>
   );
