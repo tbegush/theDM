@@ -40,7 +40,7 @@
   <h3 align="center">TheDM</h3>
 
   <p align="center">
-   A basic social media app.
+   The internet's hottest new chat app.
     <br />
     <a href="https://github.com/tbegush/TheDM"><strong>Explore the docs »</strong></a>
     <br />
