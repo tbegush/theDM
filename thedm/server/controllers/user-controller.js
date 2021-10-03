@@ -38,5 +38,16 @@ module.exports = {
         }
 
         res.json({ user });
+    },
+
+    //Gets All Users
+    async getAllUser(req, res) {
+        const allUser = await User.find({});
+
+        if (!allUser) {
+            return res.status(400).json({ message: 'uh oh looks like something went wrong'});
+        }
+
+        res.json({ allUser });
     }
 }
