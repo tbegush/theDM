@@ -11,21 +11,17 @@ const typeDefs = gql`
         user: user
     }
 
-    type Post {
-        _id: ID
-        messageText: String
-        createdAt: String
-        username: String
-    }
-
     type Query {
-
+        me: User
+        users: [User]
+        user(username: String!): User
     }
 
     type Mutation {
-
+        login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     }
 `;
 
 
-module.exports = typedefs;
+module.exports = typeDefs;
