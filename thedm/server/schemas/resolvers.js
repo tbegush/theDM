@@ -13,14 +13,14 @@ const resolvers = {
             }
             throw new AuthenticationError(" You need to log in!");
         },
-    users: async () => {
-        return User.find()
-        .select('__v -password')
-    },
-    user: async (parent, { username }) => {
-        return User.findOne({ username })
-        .select('__v -password')
-    }
+        users: async () => {
+            return User.find()
+            .select('__v -password')
+        },
+        user: async (parent, { username }) => {
+            return User.findOne({ username })
+            .select('__v -password')
+        }
     },
 
     Mutation: {
