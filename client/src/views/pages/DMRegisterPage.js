@@ -15,8 +15,12 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useState } from 'react';
+import { useMutation } from "@apollo/react-hooks";
 import classnames from "classnames";
+import { LOGIN_USER } from "../../utils/mutations";
+import { ADD_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 // reactstrap components
 import {
   Button,
@@ -43,11 +47,32 @@ import ExamplesNavbar from "components/Navbars/DMNavbar.js";
 import Footer from "components/Footer/DMFooter.js";
 
 export default function DMRegisterPage() {
+  const [loginUser, { error }] = useMutation(LOGIN_USER);
+  const [registerUser] = useMutation(ADD_USER);
   const [squares1to6, setSquares1to6] = React.useState("");
   const [squares7and8, setSquares7and8] = React.useState("");
   const [fullNameFocus, setFullNameFocus] = React.useState(false);
   const [emailFocus, setEmailFocus] = React.useState(false);
   const [passwordFocus, setPasswordFocus] = React.useState(false);
+  const [registerFormData, setRegisterFormData] = React.useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [loginFormData, setLoginFormData] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const handleLoginInputChange = (event) => {
+    const { name, value } = event.target;
+    setLoginFormData({ ...loginFormData, [name]: value });
+  };
+
+  const handleRegisterInputChange = (event) => {
+    const { name, value } = event.target;
+    setRegisterFormData({ ...registerFormData, [name]: value });
+  };
   React.useEffect(() => {
     document.body.classList.toggle("register-page");
     document.documentElement.addEventListener("mousemove", followCursor);
@@ -56,7 +81,68 @@ export default function DMRegisterPage() {
       document.body.classList.toggle("register-page");
       document.documentElement.removeEventListener("mousemove", followCursor);
     };
-  },[]);
+  }, []);
+  const handleLoginSubmit = async (event) => {
+    console.log("here I am!!!!!!!!!!!", loginFormData);
+    event.preventDefault();
+
+    // check if form has everything (as per react-bootstrap docs)
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    try {
+      const { data } = await loginUser({
+        variables: loginFormData,
+      });
+
+      Auth.login(data.login.token);
+    } catch (err) {
+      console.error(err);
+      // setShowAlert(true);
+    }
+
+    setLoginFormData({
+      email: "",
+      password: "",
+    });
+  };
+
+  const handleRegisterSubmit = async (event) => {
+    console.log("Register SUBMIT! ", registerFormData);
+    event.preventDefault();
+
+    // check if form has everything (as per react-bootstrap docs)
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    try {
+      const { data } = await registerUser({
+        variables: registerFormData,
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (err) {
+      console.error(err);
+      // setShowAlert(true);
+    }
+
+    setRegisterFormData({
+      username:"",
+      email: "",
+      password: "",
+    });
+  };
+
+
+
+
+
   const followCursor = (event) => {
     let posX = event.clientX - window.innerWidth / 2;
     let posY = event.clientY - window.innerWidth / 6;
@@ -117,10 +203,13 @@ export default function DMRegisterPage() {
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
+                            name="username"
                             placeholder="Full Name"
                             type="text"
                             onFocus={(e) => setFullNameFocus(true)}
                             onBlur={(e) => setFullNameFocus(false)}
+                            onChange={handleRegisterInputChange}
+                            value={registerFormData.username}
                           />
                         </InputGroup>
                         <InputGroup
@@ -134,10 +223,13 @@ export default function DMRegisterPage() {
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
+                            name="email"
                             placeholder="Email"
                             type="text"
                             onFocus={(e) => setEmailFocus(true)}
                             onBlur={(e) => setEmailFocus(false)}
+                            onChange={handleRegisterInputChange}
+                            value={registerFormData.email}
                           />
                         </InputGroup>
                         <InputGroup
@@ -151,10 +243,13 @@ export default function DMRegisterPage() {
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
+                            name="password"
                             placeholder="Password"
                             type="text"
                             onFocus={(e) => setPasswordFocus(true)}
                             onBlur={(e) => setPasswordFocus(false)}
+                            onChange={handleRegisterInputChange}
+                            value={registerFormData.password}
                           />
                         </InputGroup>
                         <FormGroup check className="text-left">
@@ -173,7 +268,7 @@ export default function DMRegisterPage() {
                       </Form>
                     </CardBody>
                     <CardFooter>
-                      <Button className="btn-round" color="primary" size="lg">
+                      <Button className="btn-round" color="primary" size="lg" onClick={handleRegisterSubmit}>
                         Sign Up
                       </Button>
                     </CardFooter>
@@ -214,10 +309,13 @@ export default function DMRegisterPage() {
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
+                            name="email"
                             placeholder="Email"
                             type="text"
                             onFocus={(e) => setEmailFocus(true)}
                             onBlur={(e) => setEmailFocus(false)}
+                            onChange={handleLoginInputChange}
+                            value={loginFormData.email}
                           />
                         </InputGroup>
                         <InputGroup
@@ -231,16 +329,24 @@ export default function DMRegisterPage() {
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
+                            name="password"
                             placeholder="Password"
                             type="text"
                             onFocus={(e) => setPasswordFocus(true)}
                             onBlur={(e) => setPasswordFocus(false)}
+                            onChange={handleLoginInputChange}
+                            value={loginFormData.password}
                           />
                         </InputGroup>
                       </Form>
                     </CardBody>
                     <CardFooter>
-                      <Button className="btn-round" color="primary" size="lg">
+                      <Button
+                        className="btn-round"
+                        color="primary"
+                        size="lg"
+                        onClick={handleLoginSubmit}
+                      >
                         Log in
                       </Button>
                     </CardFooter>
