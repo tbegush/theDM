@@ -52,7 +52,12 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.1",
     "reactstrap": "8.7.1",
-    "web-vitals": "1.0.1"
+    "web-vitals": "1.0.1",
+    "bufferutil": "^4.0.4",
+    "socket.io": "^4.2.0",
+    "utf-8-validate": "^5.0.6",
+    "webpack": "4.44.2",
+    "webpack-cli": "^4.8.0"
   },
   "optionalDependencies": {
     "jquery": "3.5.1",

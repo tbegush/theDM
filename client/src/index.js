@@ -26,6 +26,7 @@ import "assets/demo/demo.css";
 import Index from "views/Index.js";
 import RegisterPage from "views/pages/DMRegisterPage.js";
 import ProfilePage from "views/pages/DMProfilePage.js";
+import MessagesPage from "views/pages/DMMessagesPage.js";
 import HomePage from "views/pages/HomePage.js";
 
 ReactDOM.render(
@@ -39,6 +40,10 @@ ReactDOM.render(
       <Route
         path="/profile"
         render={(props) => <ProfilePage {...props} />}
+      />
+      <Route
+        path="/messages"
+        render={(props) => <MessagesPage {...props} />}
       />
       <Route
         path="/"
