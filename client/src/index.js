@@ -28,8 +28,8 @@ import RegisterPage from "views/pages/DMRegisterPage.js";
 import ProfilePage from "views/pages/DMProfilePage.js";
 import MessagesPage from "views/pages/DMMessagesPage.js";
 import HomePage from "views/pages/HomePage.js";
-import {  ApolloProvider } from "@apollo/react-hooks";
-import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -40,7 +40,10 @@ const client = new ApolloClient({
       },
     });
   },
-  uri: "http://localhost:3001/graphql",
+  uri:
+    process.env.NODE_ENV === "production"
+      ? "/graphql"
+      : "http://localhost:3001/graphql",
 });
 
 ReactDOM.render(
@@ -52,18 +55,12 @@ ReactDOM.render(
           path="/register"
           render={(props) => <RegisterPage {...props} />}
         />
-        <Route
-          path="/profile"
-          render={(props) => <ProfilePage {...props} />}
-        />
+        <Route path="/profile" render={(props) => <ProfilePage {...props} />} />
         <Route
           path="/messages"
           render={(props) => <MessagesPage {...props} />}
         />
-        <Route
-          path="/"
-          render={(props) => <HomePage {...props} />}
-        />
+        <Route path="/" render={(props) => <HomePage {...props} />} />
       </Switch>
     </BrowserRouter>
   </ApolloProvider>,
