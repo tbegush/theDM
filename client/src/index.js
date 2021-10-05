@@ -27,24 +27,34 @@ import Index from "views/Index.js";
 import RegisterPage from "views/pages/DMRegisterPage.js";
 import ProfilePage from "views/pages/DMProfilePage.js";
 import HomePage from "views/pages/HomePage.js";
+import {  ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from 'apollo-boost';
+
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem("id_token");
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+  },
+  uri: "http://localhost:3001/graphql",
+});
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/components" render={(props) => <Index {...props} />} />
-      <Route
-        path="/register"
-        render={(props) => <RegisterPage {...props} />}
-      />
-      <Route
-        path="/profile"
-        render={(props) => <ProfilePage {...props} />}
-      />
-      <Route
-        path="/"
-        render={(props) => <HomePage {...props} />}
-      />
-    </Switch>
-  </BrowserRouter>,
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/components" render={(props) => <Index {...props} />} />
+        <Route
+          path="/register"
+          render={(props) => <RegisterPage {...props} />}
+        />
+        <Route path="/profile" render={(props) => <ProfilePage {...props} />} />
+        <Route path="/" render={(props) => <HomePage {...props} />} />
+      </Switch>
+    </BrowserRouter>
+  </ApolloProvider>,
   document.getElementById("root")
 );
