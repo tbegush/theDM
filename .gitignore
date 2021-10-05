@@ -2,8 +2,9 @@
 
 # dependencies
 /node_modules
-/thedm/server/node_modules
-/thedm/client/node_modules
+/server/node_modules
+/client/node_modules
+>>>>>>> develop
 /.pnp
 .pnp.js
 
