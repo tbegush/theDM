@@ -15,8 +15,6 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-
-import { useQuery, useMutation } from '@apollo/react-hooks';
 import React from "react";
 import classnames from "classnames";
 // javascript plugin used to create scrollbars on windows
@@ -51,7 +49,7 @@ import Footer from "components/Footer/DMFooter.js";
 
 // DM components
 import UsersList from "components/DM/UsersList";
-import { QUERY_ME } from 'utils/queries';
+import Message from "components/DM/Message";
 
 const carouselItems = [
   {
@@ -73,9 +71,7 @@ const carouselItems = [
 
 let ps = null;
 
-export default function DMProfilePage() {
-  const { data } = useQuery(QUERY_ME);
-  const userData = data?.me || {};
+export default function DMMessagesPage() {
   const [tabs, setTabs] = React.useState(1);
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -125,87 +121,24 @@ export default function DMProfilePage() {
                       className="img-center img-fluid rounded-circle"
                       src={require("assets/img/mike.jpg").default}
                     />
-                    <h4 className="title">{userData.username}</h4>
+                    <h4 className="title">(USERNAME)</h4>
                   </CardHeader>
                   <CardBody>
-                    <Nav
-                      className="nav-tabs-primary justify-content-center"
-                      tabs
-                    >
-                      <NavItem>
-                        <NavLink
-                          className={classnames({
-                            active: tabs === 1,
-                          })}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setTabs(1);
-                          }}
-                          href="#pablo"
-                        >
-                          Messages
-                        </NavLink>
-                      </NavItem>
-                      <NavItem>
-                        <NavLink
-                          className={classnames({
-                            active: tabs === 2,
-                          })}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setTabs(2);
-                          }}
-                          href="#pablo"
-                        >
-                          Search
-                        </NavLink>
-                      </NavItem>
-                    </Nav>
-                    <TabContent
-                      className="tab-subcategories"
-                      activeTab={"tab" + tabs}
-                    >
-                    <TabPane tabId="tab1">
-                      <Row>
-                        <Label sm="3">Search Users</Label>
-                        <Col sm="9">
-                            <FormGroup>
-                              <Input
-                                placeholder="Ashley Zeel"
-                                type="text"
-                              />
-                            </FormGroup>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Label sm="3"></Label>
-                        <Col sm="9">
-                        </Col>
-                      </Row>
-                    </TabPane>
-                      <TabPane tabId="tab2">
-                        <Row>
-                          <Label sm="3">Search Users</Label>
-                          <Col sm="9">
-                            <FormGroup>
-                              <Input
-                                placeholder="Steve Long"
-                                type="text"
-                              />
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Label sm="3"></Label>
-                          <Col sm="9">
-                          </Col>
-                        </Row>
-                        <UsersList></UsersList>
-                      </TabPane>
-                    </TabContent>
                   </CardBody>
                 </Card>
               </Col>
+            </Row>
+            <Row>
+                <Message user="Mario" message="Wyd?"></Message>
+            </Row>
+            <Row>
+            <Button
+                className="btn-simple btn-icon btn-round float-right"
+                color="primary"
+                type="submit"
+            >
+                <i className="tim-icons icon-send" />
+            </Button>
             </Row>
           </Container>
         </section>
