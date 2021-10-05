@@ -15,6 +15,8 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import React from "react";
 import classnames from "classnames";
 // javascript plugin used to create scrollbars on windows
@@ -49,6 +51,7 @@ import Footer from "components/Footer/DMFooter.js";
 
 // DM components
 import UsersList from "components/DM/UsersList";
+import { QUERY_ME } from 'utils/queries';
 
 const carouselItems = [
   {
@@ -71,6 +74,8 @@ const carouselItems = [
 let ps = null;
 
 export default function DMProfilePage() {
+  const { data } = useQuery(QUERY_ME);
+  const userData = data?.me || {};
   const [tabs, setTabs] = React.useState(1);
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -120,7 +125,7 @@ export default function DMProfilePage() {
                       className="img-center img-fluid rounded-circle"
                       src={require("assets/img/mike.jpg").default}
                     />
-                    <h4 className="title">(USERNAME)</h4>
+                    <h4 className="title">{userData.username}</h4>
                   </CardHeader>
                   <CardBody>
                     <Nav
