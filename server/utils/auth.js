@@ -8,11 +8,13 @@ module.exports = {
 
 
         if (req.headers.authorization) {
+           
             token = token
-                .split('')
+                .split(' ')
                 .pop()
                 .trim();
         } 
+        
         if (!token) {
             return req;
         }
@@ -20,6 +22,7 @@ module.exports = {
             const { data } = jwt.verify(token, secret, { maxAge: expiration });
             req.user = data;
         } catch {
+           
             console.log('wrong token!');
         }
 
