@@ -90,9 +90,9 @@ export default function DMProfilePage() {
     // Specify how to clean up after this effect:
     return function cleanup() {
       if (navigator.platform.indexOf("Win") > -1) {
-        ps.destroy();
-        document.documentElement.className += " perfect-scrollbar-off";
-        document.documentElement.classList.remove("perfect-scrollbar-on");
+        // ps.destroy();
+        // document.documentElement.className += " perfect-scrollbar-off";
+        // document.documentElement.classList.remove("perfect-scrollbar-on");
       }
       document.body.classList.toggle("profile-page");
     };
