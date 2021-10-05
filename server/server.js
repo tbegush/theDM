@@ -27,7 +27,19 @@ startServer()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+
+// Serve up static assets
+app.use('/images', express.static(path.join(__dirname, '../client/src/assets/img ')));
+
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../build')));
+  }
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+  });
+  
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/thedm', {
 //   useFindAndModify: false,
