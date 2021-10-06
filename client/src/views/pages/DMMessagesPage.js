@@ -21,26 +21,22 @@ import classnames from "classnames";
 import PerfectScrollbar from "perfect-scrollbar";
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
-  Label,
-  FormGroup,
-  Form,
-  Input,
-  FormText,
-  NavItem,
-  NavLink,
-  Nav,
-  Table,
-  TabContent,
-  TabPane,
   Container,
   Row,
   Col,
   UncontrolledTooltip,
   UncontrolledCarousel,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButtonDropdown,
+  Input,
+  Button,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
 } from "reactstrap";
 
 // core components
@@ -49,7 +45,7 @@ import Footer from "components/Footer/DMFooter.js";
 
 // DM components
 import UsersList from "components/DM/UsersList";
-import Message from "components/DM/Message";
+import MessageThread from "components/DM/MessageThread";
 
 const carouselItems = [
   {
@@ -128,17 +124,20 @@ export default function DMMessagesPage() {
                 </Card>
               </Col>
             </Row>
+                <MessageThread></MessageThread>
             <Row>
-                <Message user="Mario" message="Wyd?"></Message>
-            </Row>
-            <Row>
-            <Button
-                className="btn-simple btn-icon btn-round float-right"
-                color="primary"
-                type="submit"
-            >
-                <i className="tim-icons icon-send" />
-            </Button>
+            <InputGroup>
+                <Input placeholder="" />
+                <InputGroupAddon addonType="append">
+                    <Button
+                        className="btn-simple btn-icon btn-round float-right"
+                        color="primary"
+                        type="submit"
+                    >
+                        <i className="tim-icons icon-send" />
+                    </Button>
+                </InputGroupAddon>
+            </InputGroup>
             </Row>
           </Container>
         </section>
