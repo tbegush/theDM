@@ -36,9 +36,6 @@ app.use(
   express.static(path.join(__dirname, "../client/src/assets/img "))
 );
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("../client/build"));
-
 if (process.env.NODE_ENV === 'production') {
       app.use(express.static('../client/build'));
 
@@ -54,8 +51,6 @@ if (process.env.NODE_ENV === 'production') {
   //   res.sendFile(path.join(__dirname, '../build/index.html'));
   // });
   
-
-
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/thedm", {
   //   useFindAndModify: false,
   //   useNewUrlParser: true,
