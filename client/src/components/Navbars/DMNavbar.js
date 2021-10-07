@@ -190,6 +190,10 @@ import {
                     <i className="tim-icons icon-single-02" />
                     Profile Page
                     </DropdownItem>
+                    <DropdownItem tag={Link} to="/messages">
+                    <i className="tim-icons icon-bullet-list-67" />
+                    Messages
+                    </DropdownItem>
                 </DropdownMenu>
                 </UncontrolledDropdown>
                 <NavItem>

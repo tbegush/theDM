@@ -28,27 +28,62 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 
 export default function UsersList(props) {
 
+    let messageClassName = "message from-me";
+    // Replace bottom with session userId instead of Username
+    if(props.user != "Peach"){
+        messageClassName = "message from-them"
+    }
+
     // RENDER FUNCTION
-    return (
-        <Container>
-            <Row>
-                <Col l="2">
-                    <div>
-                        <img
-                            alt="..."
-                            className="img-center img-fluid rounded-circle"
-                            src={require("assets/img/mike.jpg").default}
-                            // SRC MUST BE PASSED AS A PROP LATER ON
-                        />
-                    </div>
-                    <div>
-                        {props.user}
-                    </div>
-                </Col>
-                <Col l="10">
-                    {props.message}
-                </Col>
-            </Row>
-        </Container>
-    );
+    if(messageClassName == "message from-them"){
+        return (
+                <Row>
+                        <Col xs="6" sm="6" lg="2">
+                            <div>
+                                <img
+                                    alt="..."
+                                    className="img-center img-fluid rounded-circle "
+                                    src={require("assets/img/mike.jpg").default}
+                                    // SRC MUST BE PASSED AS A PROP LATER ON
+                                />
+                            </div>
+                            {/* Have it display username only when the screen is large enough */}
+                            <div style={{"fontSize":"20px"}}>
+                                {/* {props.user} */}
+                            </div>
+                        </Col>
+                        <Col xs="6" sm="6" lg="5" style={{"fontSize":"20px"}}>
+                            <div className={messageClassName} style={{"fontSize":"20px"}}>
+                                {props.message}
+                            </div>
+                        </Col>
+                </Row>
+        );
+    }
+    else {
+        return (
+                <Row>
+                    <Col lg="5"></Col>
+                    <Col xs="6" sm="6" lg="5" style={{"fontSize":"20px"}}>
+                        <div className={messageClassName} style={{"fontSize":"20px"}}>
+                            {props.message}
+                        </div>
+                    </Col>
+                    <Col xs="6" sm="6" lg="2">
+                        <div>
+                            <img
+                                alt="..."
+                                className="img-center img-fluid rounded-circle "
+                                src={require("assets/img/mike.jpg").default}
+                                // SRC MUST BE PASSED AS A PROP LATER ON
+                            />
+                        </div>
+                        {/* Have it display username only when the screen is large enough */}
+                        <div style={{"fontSize":"20px"}}>
+                            {/* {props.user} */}
+                        </div>
+                    </Col>
+                </Row>
+        );
+    }
 }
