@@ -19,6 +19,8 @@ import React from "react";
 import classnames from "classnames";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
+import UsersList from "components/DM/UsersList";
+import { QUERY_ME } from 'utils/queries';
 // reactstrap components
 import {
   Card,
