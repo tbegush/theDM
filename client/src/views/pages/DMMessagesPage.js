@@ -68,6 +68,8 @@ const carouselItems = [
 let ps = null;
 
 export default function DMMessagesPage() {
+  const { data } = useQuery(QUERY_ME);
+  const userData = data?.me || {};
   const [tabs, setTabs] = React.useState(1);
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -117,7 +119,7 @@ export default function DMMessagesPage() {
                       className="img-center img-fluid rounded-circle"
                       src={require("assets/img/mike.jpg").default}
                     />
-                    <h4 className="title">(USERNAME)</h4>
+                    <h4 className="title">{userData.username}</h4>
                   </CardHeader>
                   <CardBody>
                   </CardBody>
