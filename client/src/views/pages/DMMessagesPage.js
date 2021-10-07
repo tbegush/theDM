@@ -19,8 +19,6 @@ import React from "react";
 import classnames from "classnames";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
-import UsersList from "components/DM/UsersList";
-import { QUERY_ME } from 'utils/queries';
 // reactstrap components
 import {
   Card,
@@ -70,8 +68,6 @@ const carouselItems = [
 let ps = null;
 
 export default function DMMessagesPage() {
-  const { data } = useQuery(QUERY_ME);
-  const userData = data?.me || {};
   const [tabs, setTabs] = React.useState(1);
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -121,7 +117,7 @@ export default function DMMessagesPage() {
                       className="img-center img-fluid rounded-circle"
                       src={require("assets/img/mike.jpg").default}
                     />
-                    <h4 className="title">{userData.username}</h4>
+                    <h4 className="title"></h4>
                   </CardHeader>
                   <CardBody>
                   </CardBody>
